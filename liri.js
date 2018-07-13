@@ -39,6 +39,8 @@ if (command == "spotify-this-song") {
         if (err) {
             return console.log(`Error occured: ` + err);
         }
+
+        console.log("~~~~~~~~~~~~~~~Song Info~~~~~~~~~~~~~~")
         var song = data.tracks.items[0];
         var artists = song.album.artists[0].name;
         var songName = term;
@@ -67,9 +69,11 @@ if (command == "movie-this") {
     queryUrl = "http://www.omdbapi.com/?apikey=trilogy&t="+term;
 
     request(queryUrl, function (error, response, body) {
+        if (error) {
         console.log('error:', error);
         console.log('statusCode:', response && response.statusCode);
-
+        }
+console.log("~~~~~~~~~~~~~~Movie Info~~~~~~~~~~~~~")
         var movieData = JSON.parse(body);
         console.log(`
 
