@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/KevMonahan/liri-node-app#readme",
   "dependencies": {
+    "dotenv": "^6.0.0",
     "fs": "0.0.1-security",
     "request": "^2.87.0",
     "twitter": "^1.7.1"
