@@ -12,6 +12,8 @@ var command = process.argv[2];
 var term = process.argv.slice(3).join(" ");
 let queryUrl = "";
 
+function runApp(command, term) {
+
 if (!command) {
     command = "my-tweets";
 }
@@ -91,6 +93,12 @@ Actors: ${movieData.Actors}
     
 }
 if (command == "do-what-it-says") {
+
+    fs.readFile("random.txt", "utf8", function(err, data) {
+        if (err) throw err;
+        var dataArray = data.split(",");
+        runApp(dataArray[0], dataArray[1]);
+    })
 // use fs.readFile to bring in the contents of random.txt
 // do a comparison on the first argument brought in to see which function it should call
 // output data based upon the comparison called.
@@ -98,3 +106,6 @@ if (command == "do-what-it-says") {
 // be sure to catch a possible infinite loop in the event of random.txt saying do-what-it-says
 // 
 } 
+}
+
+runApp(command, term);
